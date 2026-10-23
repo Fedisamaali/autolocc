@@ -7,8 +7,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "clients")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -30,4 +33,7 @@ public class Client {
     private String numPermis;
 
     private LocalDate dateInscription;
+
+    @OneToMany(mappedBy = "client")
+    private Set<Reservation> reservations = new HashSet<>();
 }
